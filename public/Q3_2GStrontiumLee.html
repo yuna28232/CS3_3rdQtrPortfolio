@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Club Registration Form</title>
+   <link rel="stylesheet" href="styles.css">
+
+
+<body>
+
+  <h1>
+  Club Registration Form
+  </h1>
+
+<form method="post" action="#"
+      onsubmit="return showSubmit()"
+      onreset="return confirmReset()">
+
+
+  <fieldset>
+    <legend>Personal Information</legend>
+
+    <label>
+      Student ID:
+      <input type="number" required onblur="checkEmpty(this)">
+    </label>
+
+    <label>
+      Full Name:
+      <input type="text" required onblur="checkEmpty(this)">
+    </label>
+
+    <label>
+      Date of Birth:
+      <input type="date" required>
+    </label>
+
+    <label>
+      E-mail Address:
+      <input type="email" required onblur="checkEmpty(this)">
+    </label>
+  </fieldset>
+
+  
+  <fieldset>
+    <legend>Additional Information</legend>
+
+    <label>
+      Phone Number:
+      <input type="number" required onblur="checkEmpty(this)">
+    </label>
+
+    <label>
+      Grade Level:
+      <select required>
+        <option value="">Select Your Grade!</option>
+        <option value="grade7">Grade 7</option>
+        <option value="grade8">Grade 8</option>
+        <option value="grade9">Grade 9</option>
+        <option value="grade10">Grade 10</option>
+        <option value="grade11">Grade 11</option>
+        <option value="grade12">Grade 12</option>
+      </select>
+    </label>
+
+    <label> Are you an... </label>
+
+    <label class="int">
+      <input type="radio" name="int/ext" value="intern" required> Intern
+    </label>
+
+    <label class="ext">
+      <input type="radio" name="int/ext" value="extern" required> Extern
+    </label>
+
+    <label>
+      Preferred Organization/Club:
+      <select required>
+        <option value="">Select Your Club!</option>
+        <option value="photo">Photography Club</option>
+        <option value="art">Art Club</option>
+        <option value="badminton">Badminton Club</option>
+        <option value="science">Science Club</option>
+        <option value="music">Music Club</option>
+      </select>
+    </label>
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Statement</legend>
+
+    <label>
+      Why do you want to join your selected organization/club? What moves you?
+      <textarea rows="4" required onblur="checkEmpty(this)"></textarea>
+    </label>
+  </fieldset>
+
+
+  <div class="buttons">
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </div>
+
+</form>
+
+<p id="submit_success" style="display:none; color: lightgreen; text-align:center;">
+  Your club application has been submitted! Good luck <3
+</p>
+
+<script>
+  function checkEmpty(field) {
+    if (!field.value.trim()) {
+      field.classList.add("error");
+    } else {
+      field.classList.remove("error");
+    }
+  }
+
+   function showSubmit() {
+    if (!confirm("Are you sure you want to submit your application?")) {
+      return false;
+    }
+
+    document.getElementById("submit_success").style.display = "block";
+    return false;
+  }
+</script>
+
+</body>
+</html>

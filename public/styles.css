@@ -1,0 +1,95 @@
+body {
+      font-family: 'Times New Roman', Times, serif;
+      padding: 20px;
+      background: transparent;
+    }
+html {
+      background-image: url(../assets/stars.gif);
+      background-color: #000000;
+      background-repeat: repeat;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+h1{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(203, 226, 247);
+}
+    form {
+      max-width: 700px;
+      margin: auto;
+      background: rgb(231, 243, 255);
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    fieldset {
+      margin-bottom: 20px;
+      border: 2px solid #a1bfe6;
+      border-width: 4px;
+      border-style:dotted;
+      padding: 15px;
+    }
+
+    legend {
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input, select, textarea {
+      font-family: 'Courier New', Courier, monospace;
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      background-color: #000000;
+      color: aliceblue;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border: 2px solid #afffc2;
+      background-color: #000000;
+      outline: none;
+    }
+
+input.error, input.error:focus,
+select.error, select.error:focus,
+textarea.error, textarea.error:focus {
+      border: 2px solid rgb(255, 155, 155);
+      background-color: #000000;
+    }
+
+    .buttons {
+      text-align: center;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      font-family: 'Courier New', Courier, monospace;
+      width: 120px;
+      margin: 10px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+        width: auto;
+        margin-top: 0;
+    }
+
+    .int, .ext {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: auto;
+    }
+
+    p{
+      font-family: 'Courier New', Courier, monospace;
+      font-style: italic;
+    }
