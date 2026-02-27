@@ -70,7 +70,7 @@ textarea.error, textarea.error:focus {
 
     input[type="submit"],
     input[type="reset"],
-    input[type="view"]{
+    input[type="button"]{
       font-family: 'Courier New', Courier, monospace;
       text-align:center;
       width: 120px;
