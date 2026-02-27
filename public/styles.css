@@ -69,8 +69,10 @@ textarea.error, textarea.error:focus {
     }
 
     input[type="submit"],
-    input[type="reset"] {
+    input[type="reset"],
+    input[type="view"]{
       font-family: 'Courier New', Courier, monospace;
+      text-align:center;
       width: 120px;
       margin: 10px;
       padding: 10px;

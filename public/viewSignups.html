@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Signups List</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      background: rgba(203, 226, 247, 0.5);
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      border-style: dotted;
+      border-color: #a1bfe6;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .sub {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .back {
+
+        font-family: 'Courier New', Courier, monospace;
+        font-style: italic;
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #feffff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    .filter {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .filter select {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 2px solid #333;
+      font-size: 14px;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    table {
+      font-family: 'Courier New', Courier, monospace;
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th {
+      background: black;
+      color: rgb(218, 225, 254);
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    td {
+      border: 1px solid #444;
+      padding: 8px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(98, 127, 185, 0.5);
+    }
+
+    tr:nth-child(odd) {
+      background: rgba(162, 191, 249, 0.5);
+    }
+
+    .no-data {
+      margin-top: 15px;
+      padding: 12px;
+      border: 2px solid #000;
+      background: #f8f8f8;
+      text-align: center;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    label {
+        font-style:oblique;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Show List of Students Who Signed-Up</h1>
+
+  <a href="Q3_3GStrontiumLee.html" class="back">Back to Signups...</a>
+
+  <div class="filter">
+    <label>Select Your Club!</label>
+    <select id="filter" onchange="displayData()">
+      <option value="all">Select a Club!</option>
+      <option value="Photography">Photography</option>
+      <option value="Art">Art</option>
+      <option value="Badminton">Badminton</option>
+      <option value="Science">Science</option>
+      <option value="Music">Music</option>
+    </select>
+  </div>
+
+  <p class="total">Total Signups: <span id="total">0</span></p>
+
+  <div id="tableArea"></div>
+
+</div>
+
+<script>
+function displayData() {
+  let data = JSON.parse(localStorage.getItem("signups")) || [];
+  let filter = document.getElementById("filter").value;
+  let tableArea = document.getElementById("tableArea");
+  let total = document.getElementById("total");
+
+  tableArea.innerHTML = "";
+
+  if (data.length === 0) {
+    total.textContent = 0;
+    tableArea.innerHTML = `<div class="no-data">No sign ups yet...:(</div>`;
+    return;
+  }
+
+  let filtered = filter === "all"
+    ? data
+    : data.filter(s => s.club === filter);
+
+  total.textContent = filtered.length;
+
+  if (filtered.length === 0) {
+    tableArea.innerHTML = `<div class="no-data">No signups applied to the club yet...:(</div>`;
+    return;
+  }
+
+  let table = `
+    <table>
+      <thead>
+        <tr>
+          <th>Chosen Club</th>
+          <th>Student ID</th>
+          <th>Full Name</th>
+          <th>Grade Level</th>
+          <th>E-mail Address</th>
+          <th>Phone Number</th>
+          <th>Intern/Extern</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  filtered.forEach(s => {
+    table += `
+      <tr>
+        <td>${s.club}</td>
+        <td>${s.id}</td>
+        <td>${s.name}</td>
+        <td>Grade ${s.grade}</td>
+        <td>${s.email}</td>
+        <td>${s.phone}</td>
+        <td>${s.type}</td>
+      </tr>
+    `;
+  });
+
+  table += "</tbody></table>";
+
+  tableArea.innerHTML = table;
+}
+
+displayData();
+</script>
+
+</body>
+</html>

@@ -96,10 +96,10 @@
     </label>
   </fieldset>
 
-
   <div class="buttons">
     <input type="submit" value="Submit">
     <input type="reset" value="Reset">
+    <input type="view" value="View Signups" onclick="location.href='viewSignUps.html'">
   </div>
 
 </form>
@@ -109,22 +109,31 @@
 </p>
 
 <script>
-  function checkEmpty(field) {
-    if (!field.value.trim()) {
-      field.classList.add("error");
-    } else {
-      field.classList.remove("error");
-    }
-  }
+document.getElementById("signupForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-   function showSubmit() {
-    if (!confirm("Are you sure you want to submit your application?")) {
-      return false;
-    }
+  if (!confirm("Are you sure you want to submit?")) return;
 
-    document.getElementById("submit_success").style.display = "block";
-    return false;
-  }
+  let signup = {
+    id: studentId.value,
+    name: fullName.value,
+    dob: dob.value,
+    email: email.value,
+    phone: phone.value,
+    grade: grade.value,
+    type: document.querySelector('input[name="type"]:checked').value,
+    club: club.value,
+    reason: reason.value
+  };
+
+  let data = JSON.parse(localStorage.getItem("signups")) || [];
+  data.push(signup);
+
+  localStorage.setItem("signups", JSON.stringify(data));
+
+  document.getElementById("submit_success").style.display = "block";
+  this.reset();
+});
 </script>
 
 </body>
